@@ -2,7 +2,7 @@ from fastapi import APIRouter
 from app.utils import make_response, ResponseCode
 
 
-route = APIRouter()
+bp = APIRouter()
 
 
 @make_response
@@ -11,4 +11,4 @@ def heartbeat():
     return ResponseCode.Success.value, '', {}
 
 
-route.add_api_route(path='/heartbeat', name='heartbeat', endpoint=heartbeat, tags=['心跳检测'])
+bp.add_api_route(path='/heartbeat', name='heartbeat', endpoint=heartbeat, tags=['心跳检测'])
