@@ -20,6 +20,11 @@ class MysqlSettings(BaseSettings):
     uri: str = Field('mysql+mysqlconnector://root:123456@localhost:3306/fastapi')
 
 
+class MongoSettings(BaseSettings):
+    uri: str = Field('mongodb://localhost:27017/test')
+
+
 app_settings = AppSettings()
 redis_settings = RedisSingleSettings()
 mysql_settings = MysqlSettings()
+mongo_settings = MongoSettings()
