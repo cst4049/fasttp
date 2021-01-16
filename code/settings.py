@@ -3,10 +3,13 @@ from pydantic import BaseSettings, Field
 
 
 class AppSettings(BaseSettings):
+    host: str = Field('127.0.0.1', title='主机')
+    port: int = Field(9000, title='端口')
     blueprints: List[str] = Field(['heartbeat'], title='蓝图')
 
 
-class RedisSettings(BaseSettings):
+class RedisSingleSettings(BaseSettings):
+    """单机版redis"""
     host: str = Field('localhost', title='主机')
     port: int = Field(6379, title='端口')
     password: str = Field(None, title='密码')
@@ -15,13 +18,8 @@ class RedisSettings(BaseSettings):
 
 class MysqlSettings(BaseSettings):
     uri: str = Field('mysql+mysqlconnector://root:123456@localhost:3306/fastapi')
-    host: str = Field('localhost', title='主机')
-    port: int = Field(3306, title='端口')
-    user: str = Field('root', title='帐号')
-    password: str = Field('123456', title='密码')
-    database: str = Field('fastapi', title='数据库')
 
 
 app_settings = AppSettings()
-redis_settings = RedisSettings()
+redis_settings = RedisSingleSettings()
 mysql_settings = MysqlSettings()

@@ -1,4 +1,4 @@
-from app.common.db_mysql import mysql_client
+from app.common import mysql_client
 from settings import mysql_settings
 from app.models.heartbeat import Item
 
